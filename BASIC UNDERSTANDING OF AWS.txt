@@ -1,0 +1,253 @@
+IAM : it is a web service that helps you securly control access to aws resources for your users. you use IAM to control who can use your resourcess and what resources they can use and in what ways
+
+
+Amazon Elastic Compute Cloud (Amazon EC2): provides scalable computing capacity in the Amazon Web Services (AWS) Cloud. Using Amazon EC2 eliminates your need to invest in hardware up front, so you can develop and deploy applications faster. You can use Amazon EC2 to launch as many or as few virtual servers as you need,configure security and networking, and manage storage.
+
+
+AWS EC2 Instance Types:
+1) General purpose instance 
+2) compute optimized instance
+3) storage optimized instance
+4) memory optimized instance
+5) accelerated computing instances
+
+
+AWS EC2 Pricing:
+    Free-tier
+1) On Demand instances
+2) reservered instances
+3) spot instances
+4) dedicated hosts
+
+
+EC2 Auto scaling: It monitors your application and automatically adds or removes capacity from your resource groups in real-time as demands change.
+
+                  Scale-in : remove the EC2 instances
+                  Scale-out: adding the EC2 instances
+                  vertical-scaling: adding the capacity for the instances  
+                                                                
+                  Horizontal scalng: adding the no of instances  ---> 3 types 1) dynamic scaling- based on thresold cpu utilization
+                                                                              2) scheduling scaling --> according to our business times morning or evening
+                                                                              3) predictive scaling --> aws will predict that want to add or remove for this 
+
+Elastic Load Balancing: it  automatically distributes your incoming traffic across multiple targets, such as EC2 instances, containers, 
+and IP addresses, in one or more Availability Zones
+
+Types of load balances :
+1) Application load balancer( path based routing): Application load balancer is an elastic load balancer that runs on the application layer (layer 7 of the OSI layer model) and receives only HTTP and HTTPS connection requests. It acts as a single point of entry for the incoming requests and distributes the traffic among targets in a target group.
+
+
+Besides balancing the load among multiple targets, the main function of the application load balancer is to route traffic using some listener rules. These listener rules make the application load balancer an intelligent load balancer. Listener rules in an application load balancer listener can be added based on the following parameters.
+
+
+2) network load balancer( static IP): It operates at the 4th layer of the OSI model and can respond to millions of requests per second. After receiving the request from the end-user, the network load balancer routes that request to a target in the target group. It opens a TCP connection to the selected target on a port specified in the target group configuration.
+
+
+Network load balancer can send requests to multiple targets in different availability zones. While creating the load balancer, will ask for the availability zones in which you want to deploy the load balancer. The elastic load balancer then creates nodes in all the selected availability zones. The network load balancer distributes the traffic to its own availability zone only. Still, if you have enabled the cross zone load balancing feature, it will distribute the load across different availability zones.
+
+3) classic load balancer: Classic load balancer is a previous generation load balancer and provides basic load balancing across multiple instances. This load balancer operates at both the 7th and 4th layers. It is useful for the applications that are deployed in the EC2 classic network.
+
+
+AWS recommends using the application load balancer for 7th layer traffic and network load balancer for 4th layer traffic in the VPC (virtual private cloud).
+
+4) gateway load balancer: Gateway load balancer is the type of elastic load balancer provided by AWS and can be used to deploy, manage and scale virtual appliances like IDS, IPS and firewalls. It is the latest type of load balancer and operates at the 3rd layer of the OSI (open system interconnection) layer model and listens for all IP packets on all ports of the load balancer, then forwards the traffic to a specific target group configured in the listener rule.
+
+Gateway load balancer can be used to exchange traffic securely across VPCs by using the gateway load balance endpoints. Gateway load balancer endpoint is a VPC endpoint that is used for private connectivity between the virtual appliance and application server in different VPCs. 
+
+
+
+
+Amazon Elastic Block Store: is a cloud-based block storage system provided by Amazon Web Services (AWS) that is best used for storing persistent data.
+ Amazon EBS enables you to keep data persistently on a file system, even after you shut down your EC2 instancee
+Amazon also provides local storage for EC2 instances that you can use while you run the instance, but you lose the data when you shut down the instance. This means, if you want to save that data, you need to store it on Amazon EBS.
+
+EBS Provisioned IOPS SSD (io1) -- the highest performance option. Provides high IOPS per volume and a high maximum throughput per volume and is ideal for database workloads.
+EBS General Purpose SSD (gp2) -- the default EBS volume. Offers high IOPS per volume, but at a lower rate and cost than io1, and is intended for dev-test workloads, virtual desktops and low-latency apps.
+Throughput Optimized HDD (st1) -- offers high throughput per volume and a large volume size, and is ideal for data warehouses and log processing.
+Cold HDD (sc1) – meant for less frequently accessed workloads, such as cold data, and provides the lowest IOPS per volume at the lowest price of all the EBS volumes.
+
+Amazom machine Image: it is customized of an EC2 instances. 
+
+Simple Storage service S3: it object storage services
+
+storage classes: 
+1) s3 standard general purpose
+2) s3 intelligent tiering
+3) s3 standard infreqquent access
+4) s3 standard infrequeent access (IZ)
+5) s3 Glacier
+6) s3 Glacier Deep archive              s3 reduced redundancy storage ( omitted)
+
+
+AWS Snow family : AWS Snow Family is a collection of physical devices that help to migrate large amounts (terabytes or petabytes or exabytes) of data into the cloud without depending on networks/Internet. AWS Snow Family services help physically import/export of data securely and quickly to AWS.
+
+
+1) Snow cone:AWS Snowcone is the most compact and portable device. Weighing in at 4.5 pounds (2.1 kg) and available with SSD or HDD options, Snowcone is ruggedized, secure, and purpose-built for use outside of a traditional data center.
+
+2) snowball edge:AWS Snowcone is the most compact and portable device. Weighing in at 4.5 pounds (2.1 kg) and available with SSD or HDD options, Snowcone is ruggedized, secure, and purpose-built for use outside of a traditional data center.
+
+3) snowmobile: AWS Snowmobile is an exabyte-scale data transfer service that enables customers to quickly migrate large amount of data from on-premises to AWS with secure, fast and cost-effective manner.
+
+You can transfer 100PB per Snowmobile, a 45-foot long ruggedized shipping container, pulled by a semi-trailer truck.
+
+
+
+Storage Gateway: it is hybrid cloud storage service it connects the on premises data storage to aws cloud . three types 1) tape 2) file 3) volume
+
+
+VPC Peering : vpc peering is a network connection between two vpc that enables the route traffic between two them with using IPV4 and IPV6 addresses. instances in either VPC can communicate with each other as if they are in the same network.
+
+
+VPC endpoint enables creation of a private connection between VPC to supported AWS services and VPC endpoint services powered by PrivateLink using its private IP address. Traffic between VPC and AWS service does not leave the Amazon network.
+
+There are two types of VPC endpoints:
+
+Interface endpoint is an elastic network interface (ENI) with a private IP address from the IP address range of user’s subnet that serves as an entry point for traffic destined to a supported service. It enables you to privately access services by using private IP addresses.
+
+Gateway endpoint is a gateway that you specify as a target for a route in your route table for traffic destined to a supported AWS service. Currently supports S3 and DynamoDB services.\\
+
+
+REDSHIFT: it is a dataware house service that is used for collecting and storing the data and also enables a user to analyze the data using BI tools and simplifies the process of handling large scale datasetsx  
+
+Elastic Cache : EC is a in memory database with high performance and low latency it helps to reduce load off database for read intensive workload . two types 1) Redis 2) memcaches
+
+Amazon EMR :(earlier known as Amazon Elastic MapReduce) is a managed cluster platform that makes it easier to run big data frameworks like Apache Hadoop and Apache Spark on AWS to process and analyze massive volumes of data.
+
+Amazon Athena is an interactive query service that makes it easy to analyze data in Amazon S3 using standard SQL. 
+
+AWS Glue is a serverless data integration and ETL service that makes discovering, preparing, and combining data for data analysis, Machine Learning, and application development simple. To enable the data integration process smoother, Glue offers both visual and code-based tools.
+
+AWS Quicksight is an AWS based Business Intelligence and visualization tool that is used to visualize data and create stories to provide graphical details of the data.
+
+DocumentDB: The document database defined A document database is a type of nonrelational database that is designed to store and query data as JSON-like documents. 
+
+Amazon Neptune is a fast, reliable, fully managed graph database service that makes it easy to build and run applications that work with highly connected datasets.
+
+Amazon Quantum Ledger Database (Amazon QLDB) is a fully managed ledger database that provides a transparent, immutable, and cryptographically verifiable transaction log owned by a central trusted authority. 
+
+
+Elastic Bean stalk is a developer centric view of deploying an application on aws. we can quickly deploy and manage applications. no need to learn about infrastructure that runs those applications,just nedd to upload your application.Capacity provising load balancing scaling and application healthmonitoring EBS will take care 
+ How it works:  create application ---> Upload Version --> launch Environment --> manage Environment
+
+Keypair: it secure login information for your Virtual machines. to connect to the instances you can use keypairs which contain a public and Private key
+
+** how many subnets can you have per vpc ----> 200 subnets
+
+Types of cloud services
+1) software as a service
+2) infrastruce as a service
+3) platform as a service
+4)data as a service
+
+
+Elastic transcoder is aws service tool that helps you in changing the video's format and resolution to support various devices like tablet smartphones, laptop of different resolutions
+
+Cloudwatch helps you to monitor aws environment like EC2 rds instances, Cpu utilization it also triggers alarm depending on various metrics
+
+snowball is small application that enables you to transfer TB of data inside and outside of AWS ENV
+create a job --> Connect the snowball --> copy the data to the snowball --> your data will be moved to aws
+
+DNS and Load balancer are the part of IAAS storage cloud service
+
+T2 instances are designed to provide moderate baseline performance and capacity to burst to higher performance as required by the workload
+
+S3 simple storage service you can use s3 interface to store and retrive any amount of data., any time and any where on the web For S3 the payment model is pay as you go
+
+Route53 uses the following to provide HA and low latency:
+1) Globally Distributed servers
+2) Dependency
+3) optimal locations
+
+AZ is the physical locations where amazon data center is located
+Regions is collection or group of AZ or datacenters
+
+you can monitor VPC using : 1) cloudwatch 2) VPC flow Logs
+
+ON Demand instances: these instances are prepared as when needed. whenever you feel the need tfor the new EC2 instances, you can go ahead and create an on demand instances it is cheap fo rthe short time but not when taken for the long term
+
+Spot instances: these type of instances can be bought through bidding model. these are comparatevely cheaper than On demand instances
+
+Reserved instances : you can create instances that you can reserve for a year or so. these types of instances are especaillly useful when you know in advance that you will be needing for the long period of time in such cases you can create a reserved instances and save heavily on costs.
+
+STOPPING an EC2 instance means to shut it down as you would normally do your personal computer . this will not delete any volumes attached to the instances and the instances can start it again when needed
+
+TERMINATING an instances is equivalent to deleting an instance all the volumes attache to the instances get deleted it is not possible to restart the instances if needed at a later point of time
+
+RECOVERY TIME OBJECTIVE: it is the maximum acceptable delay between the interruption of service and restoration of service. this translates to an acceptable time window when service can unavailable
+
+RECOVERY POINT OBJECTIVE: it the maxi accptable amount of time since the last data restore point . it traslate to the acceptable amount of data loss which lies between the last recovery point and interruption of servie
+
+Lifecycle hooks are used for auto scaling to put an additional wait time to a scale in or scale out event
+
+
+WEB APPLICATION FIREWALL service that it monitor you request that forwarded to an api gateway, cloud front distribution, ALB . you can protect those based on condition that you specify as the IP addressess that the requests orginate them.
+
+
+df -h ( checking the disk space)
+du -sh <file size or dir >( size of particular file size)
+
+UPGRADE T2 -T3 the instance type 
+1) firstly need to stop the server then start upgrade the server  select the instance --> actions--> instance settings --> change instance type --> select instance type and start the server
+
+Amazon Route 53. Amazon Route 53 is a highly available and scalable cloud Domain Name System (DNS) web service
+three main functions in any combination
+1) if a website need a name route 53 the name for the website
+2) route53 helps to convert the browser with the website or web application when the user enter the domain name
+3) route53 checks health of ressources by sending automated requests over the internet to a resources
+
+NS(name server)  and SOA(start of autority)  Records that Amazon Route 53 Creates for a Public Hosted Zone. For each public hosted zone that you create, Amazon Route 53 automatically creates a name server (NS) record and a start of authority (SOA) record. Don't change these records.
+
+
+AWS AMPLIFY : it an open source JS library provided by aws that enables developer to build applications with cloud services on web or mobile platforms .AWS Amplify is a set of purpose-built tools and features that lets frontend web and mobile developers quickly and easily build full-stack applications on AWS, with the flexibility to leverage the breadth of AWS services as your use cases evolve.
+
+add authentication
+deploy and host application
+
+API GATEWAY : it is a service provided by amazon that used to create publish maintain monitor and secure various API's such as REST , HTTP Websocket at any scale
+
+TRANSIT Gateway:  it is highly available and scalable service that provide the interconnectivity between the VPCs and your onpremises network with in region and 
+
+GLOBAL ACCERLATION: it is aservice that improve the availability and performance of your applications with local or global users
+
+AWS TRUSTED advisor is a online tool that provide a real time guidance about reduce cost and improve performance and improve guideances
+
+AWS Systems Manager is the operations hub for AWS. Systems Manager provides a unified user interface so you can track and resolve operational issues across your AWS applications and resources from a central place. 
+
+AWS Cloudtrail is a service that enables goverance compliance operational auditing and risk auditing of your awsaccount. aws cloudtrail provides event history of your aws accoutn activity including actions taken through the aws management console , sdk , cli and other aws serive
+
+SITE -to-SITE VPN : it used to connect onpremises data center to connect to the cloud in VPC , connection is automatically encrypted , goes over the public
+
+DIRECT CONNECT : it establish a physical connection between on premises and aws cloud , the connection is private secure and fast , goes over private network, it will take over a month to establish a connection.
+
+VPC ENDPOINTS: endpoints allow to connect to aws services using private network
+ VPC end point gateway : S3 & Dynamo DB
+VPC end point interface : remaining service 
+
+PENETRATING TESTING on aws cloud: aws customer can do security assesment on their own infrastructuure to test the security  
+8 services: 
+ec2, NAT, ELB
+rds
+cloudfront
+auora
+api gateway
+lambda  
+
+AWS CERTificate manager: let you easily provision manage deploy SSL TLS certificate.
+
+AWS SECRET Manager : it is service provided by aws to store secrets passwords credentals thirdparty keys or any such confidential information.
+
+TASKS:
+1) Host a static website on AWS S3 using Cloud Front Distribution and Route53
+2) VPC PEERING 
+3) Configuring DNS with AWS Route53 Tutorial | How to link Freenom domain to AWS EC2 using Route 53
+4) Adding WAF to the API Gateway, Application load balancer, Cloudfront 
+5) Deploy React application to Amazon Web Services with HTTPS: S3, Cloudfront, Certificate Manager
+
+Amazon Simple Notification Service (Amazon SNS) is a managed service that provides message delivery from publishers to subscribers (also known as producers and consumers ). Publishers communicate asynchronously with subscribers by sending messages to a topic, which is a logical access point and communication channel.
+
+SQS: Using SQS, you can send, store, and receive messages at any volume, without losing messages or requiring other services to be available. SQS It is used to decouple various components of the application. To understand in simple terms, it is like a buffered storage in between various software components.
+
+
+mantis bug tracking tool (plugin it will be .hpi format ) need to be there compulsory in the advanced setting to manage plugins 
+
+
